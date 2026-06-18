@@ -17,7 +17,7 @@ This project is configured for GitHub Pages with:
 - `gh-pages` as a dev dependency
 - `base: "/Amazon-Clone/"` in `vite.config.js`
 - `public/.nojekyll` so GitHub Pages serves the built files without Jekyll processing
-- `.github/workflows/deploy.yml` for automatic GitHub Actions deployment from `main`
+- `.github/workflows/deploy.yml` for automatic GitHub Actions deployment from `main` to the `gh-pages` branch
 
 The app currently uses state-based navigation instead of route paths, so page refreshes and direct visits work on GitHub Pages. If React Router is added later, use `HashRouter` or configure a GitHub Pages fallback before deploying route-based pages.
 
@@ -73,10 +73,12 @@ Settings -> Pages -> Build and deployment -> Source
 Select:
 
 ```text
-GitHub Actions
+Deploy from a branch
+Branch: gh-pages
+Folder: / (root)
 ```
 
-Then open the repository's `Actions` tab and wait for `Deploy to GitHub Pages` to finish. The site will be available at:
+Then open the repository's `Actions` tab and wait for `Deploy to GitHub Pages` to finish. The workflow builds the app and publishes the `dist` folder to the `gh-pages` branch. The site will be available at:
 
 ```text
 https://Devyansh008.github.io/Amazon-Clone/
@@ -98,7 +100,7 @@ npm run deploy
 
 The deploy script runs `npm run build` first and then publishes the `dist` folder to the `gh-pages` branch.
 
-If using the manual `gh-pages` deploy instead of GitHub Actions, open the GitHub repository settings:
+If using the manual `gh-pages` deploy, open the GitHub repository settings:
 
 ```text
 Settings -> Pages -> Build and deployment -> Source
